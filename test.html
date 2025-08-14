@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">API Test Page</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Register</h2>
+                <form id="register-form" class="flex flex-col space-y-2">
+                    <input type="email" id="register-email" placeholder="Email" class="border p-2 rounded">
+                    <input type="password" id="register-password" placeholder="Password" class="border p-2 rounded">
+                    <input type="text" id="register-phone" placeholder="Phone" class="border p-2 rounded">
+                    <input type="text" id="register-walletAddress" placeholder="Wallet Address" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Register</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="register-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Login</h2>
+                <form id="login-form" class="flex flex-col space-y-2">
+                    <input type="email" id="login-email" placeholder="Email" class="border p-2 rounded">
+                    <input type="password" id="login-password" placeholder="Password" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Login</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="login-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Get Metamask Nonce</h2>
+                <form id="metamask-nonce-form" class="flex flex-col space-y-2">
+                    <input type="text" id="metamask-nonce-walletAddress" placeholder="Wallet Address" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Get Nonce</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="metamask-nonce-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Verify Metamask Signature</h2>
+                <form id="metamask-verify-form" class="flex flex-col space-y-2">
+                    <input type="text" id="metamask-verify-walletAddress" placeholder="Wallet Address" class="border p-2 rounded">
+                    <input type="text" id="metamask-verify-signature" placeholder="Signature" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Verify</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="metamask-verify-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Verify Email</h2>
+                <form id="verify-email-form" class="flex flex-col space-y-2">
+                    <input type="text" id="verify-email-token" placeholder="Token" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Verify</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="verify-email-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Generate 2FA Secret</h2>
+                <form id="2fa-generate-form" class="flex flex-col space-y-2">
+                    <input type="text" id="2fa-generate-token" placeholder="JWT Token" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Generate</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="2fa-generate-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Verify 2FA Token</h2>
+                <form id="2fa-verify-form" class="flex flex-col space-y-2">
+                    <input type="text" id="2fa-verify-email" placeholder="Email" class="border p-2 rounded">
+                    <input type="text" id="2fa-verify-token" placeholder="2FA Token" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Verify</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="2fa-verify-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Forgot Password</h2>
+                <form id="forgot-password-form" class="flex flex-col space-y-2">
+                    <input type="email" id="forgot-password-email" placeholder="Email" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Send Reset Email</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="forgot-password-response"></div>
+            </div>
+
+            <div class="endpoint bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Reset Password</h2>
+                <form id="reset-password-form" class="flex flex-col space-y-2">
+                    <input type="text" id="reset-password-token" placeholder="Token" class="border p-2 rounded">
+                    <input type="password" id="reset-password-password" placeholder="New Password" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Reset Password</button>
+                </form>
+                <div class="response bg-gray-200 p-2 mt-2 rounded" id="reset-password-response"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api/auth';
+
+        const handleResponse = async (response) => {
+            const data = await response.json();
+            return JSON.stringify(data, null, 2);
+        };
+
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const phone = document.getElementById('register-phone').value;
+            const walletAddress = document.getElementById('register-walletAddress').value;
+            const response = await fetch(`${API_URL}/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, phone, walletAddress }),
+            });
+            document.getElementById('register-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+            document.getElementById('login-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('metamask-nonce-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const walletAddress = document.getElementById('metamask-nonce-walletAddress').value;
+            const response = await fetch(`${API_URL}/metamask/nonce/${walletAddress}`);
+            document.getElementById('metamask-nonce-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('metamask-verify-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const walletAddress = document.getElementById('metamask-verify-walletAddress').value;
+            const signature = document.getElementById('metamask-verify-signature').value;
+            const response = await fetch(`${API_URL}/metamask/verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ walletAddress, signature }),
+            });
+            document.getElementById('metamask-verify-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('verify-email-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = document.getElementById('verify-email-token').value;
+            const response = await fetch(`${API_URL}/verify-email/${token}`);
+            document.getElementById('verify-email-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('2fa-generate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = document.getElementById('2fa-generate-token').value;
+            const response = await fetch(`${API_URL}/2fa/generate`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}` },
+            });
+            document.getElementById('2fa-generate-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('2fa-verify-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('2fa-verify-email').value;
+            const token = document.getElementById('2fa-verify-token').value;
+            const response = await fetch(`${API_URL}/2fa/verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, token }),
+            });
+            document.getElementById('2fa-verify-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgot-password-email').value;
+            const response = await fetch(`${API_URL}/forgot-password`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            document.getElementById('forgot-password-response').textContent = await handleResponse(response);
+        });
+
+        document.getElementById('reset-password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = document.getElementById('reset-password-token').value;
+            const password = document.getElementById('reset-password-password').value;
+            const response = await fetch(`${API_URL}/reset-password/${token}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password }),
+            });
+            document.getElementById('reset-password-response').textContent = await handleResponse(response);
+        });
+
+    </script>
+</body>
+</html>
